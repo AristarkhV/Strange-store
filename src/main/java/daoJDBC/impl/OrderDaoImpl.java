@@ -72,8 +72,8 @@ public class OrderDaoImpl implements OrderDao {
         String sql = "SELECT user_order.idOrder, user_order.email, user_order.delivery_address, " +
                             "product.idProduct, name, price, description " +
                      "FROM user_order " +
-                          "INNER JOIN order_product on order_product.idOrder = user_order.idOrder " +
-                          "INNER JOIN product on product.idProduct = order_product.idProduct " +
+                          "INNER JOIN order_product ON order_product.idOrder = user_order.idOrder " +
+                          "INNER JOIN product ON product.idProduct = order_product.idProduct " +
                           "WHERE user_order.idUser = " + value.getUserID() +
                      " ORDER BY user_order.idOrder DESC LIMIT 1";
         try (Connection Connection = DBConnection.getConnection();

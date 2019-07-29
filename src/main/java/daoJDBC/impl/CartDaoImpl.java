@@ -46,8 +46,8 @@ public class CartDaoImpl implements CartDao {
                 cart = Optional.of(new Cart(resultSet.getLong("idCart"), products, value));
             }
             sql = "SELECT product.idProduct, name, price, description FROM cart " +
-                    "INNER JOIN product_cart on product_cart.idCart = cart.idCart " +
-                    "INNER JOIN product on product.idProduct = product_cart.idProduct " +
+                    "INNER JOIN product_cart ON product_cart.idCart = cart.idCart " +
+                    "INNER JOIN product ON product.idProduct = product_cart.idProduct " +
                     "WHERE cart.idUser = '" + value.getUserID() + "'";
             try (Connection nextConnection = DBConnection.getConnection();
                  Statement nextStatement = nextConnection.createStatement();

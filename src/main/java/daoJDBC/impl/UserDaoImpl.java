@@ -26,7 +26,7 @@ public class UserDaoImpl implements UserDao {
         try (Connection connection = DBConnection.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(
-                     "SELECT * FROM user INNER JOIN role on role.idRole = user.idRole ")) {
+                     "SELECT * FROM user INNER JOIN role ON role.idRole = user.idRole ")) {
             while (resultSet.next()) {
                 userList.add(new User(resultSet.getLong("idUser"),
                                       resultSet.getString("email"),
@@ -87,7 +87,7 @@ public class UserDaoImpl implements UserDao {
     public Optional<User> getUserByEmail(String email) {
 
         Optional<User> user = Optional.empty();
-        String sql = "SELECT * FROM user INNER JOIN role on role.idRole = user.idRole "
+        String sql = "SELECT * FROM user INNER JOIN role ON role.idRole = user.idRole "
                    + "WHERE user.email = '" + email + "'";
         try (Connection connection = DBConnection.getConnection();
              Statement statement = connection.createStatement();
@@ -114,7 +114,7 @@ public class UserDaoImpl implements UserDao {
         try (Connection connection = DBConnection.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(
-                     "SELECT * FROM user INNER JOIN role on role.idRole = user.idRole " +
+                     "SELECT * FROM user INNER JOIN role ON role.idRole = user.idRole " +
                           "WHERE user.idUser = " + id)) {
             if(resultSet.next()) {
                 user = Optional.of(
